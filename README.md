@@ -33,8 +33,10 @@ Installation
 1️⃣ Clone this repo
 git clone (https://github.com/iamaniket-python/Hotel-Booking-Express.js-.git)
 cd hotel-booking
+
 2️⃣ Install dependencies
 npm install
+
 3️⃣ Start MongoDB
 
 Make sure MongoDB is running locally or connect to MongoDB Atlas.
@@ -69,4 +71,5 @@ This project is licensed under the MIT License.
 ---
 
 👨‍💻 This project is made by **Aniket Shrivastava**
+
 
