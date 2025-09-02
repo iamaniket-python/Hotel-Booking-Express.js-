@@ -22,12 +22,18 @@ app.get("/",(req, res)=>{
     res.send("hii sonali");
 })
 
+// #index route
 app.get("/listings", async (req, res) => {
   const allListings = await Listing.find({});
   res.render("listing/index", { allListings });
 });
 
-
+// show route
+app.get("/listings/:id", async(req,res)=>{
+    let {id} =req.params;
+    const lisiting =await Listing.findById(id);
+     res.render("listing/show", { lisiting });
+})
 
 app.listen(8080,()=>{
     console.log("Running succesfully  to port 8080")
