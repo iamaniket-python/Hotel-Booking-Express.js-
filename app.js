@@ -70,10 +70,18 @@ app.get("/listings/:id/edit",async(req,res)=> {
 // update route
 app.put("/listings/:id",async(req,res)=> {
    let {id} =req.params;
-   await Listing .findByIdUodate(id,{...req.body.listing});
+   await Listing .findByIdUpdate(id,{...req.body.listing});
    res.redirect(`/listings/${id}`);
 });
-
+// ------------------------------------------------------------------------
+//  delete
+app.delete("/listing/:id",async(req, res)=>{
+    let {id} =req.params;
+    let deletedListing =await Listing.findByIdAndDelete(id);
+    console.log(deletedListing);
+    res.redirect("/listings");
+});
+// ---------------------------------------------------------------------------
 app.listen(8080,()=>{
     console.log("Running succesfully  to port 8080")
 })
