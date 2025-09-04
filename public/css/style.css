@@ -1,3 +1,12 @@
+body{
+    font-family: 'plus jakarta Sans',sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
 /* navbar */
 
 .navbar{
@@ -58,5 +67,37 @@
     padding: 0
 }
 .card-text{
-    font-weight: 400;
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+
+/* card effect */
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+
+
+.add-btn{
+    background-color: red;
+}
+
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+}
+
+.show-card{
+    padding-left: 0;
+    padding-right: 0;;
 }

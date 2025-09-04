@@ -1,19 +1,51 @@
 <% layout("layouts/boilerplate") %>
-<body>
-  <form method="POST" action="/listings">
-  <input name="listing[title]" placeholder="Enter title" type="text">
-  <br>
-  <textarea name="listing[description]" placeholder="Enter description"></textarea>
-  <br>
-  <input name="listing[image]" placeholder="Enter URL" type="text">
-  <br>
-  <input name="listing[price]" placeholder="Enter price" type="text">
-  <br>
-  <input name="listing[location]" placeholder="Enter location" type="text">
-  <br>
-  <input name="listing[country]" placeholder="Enter country" type="text">
-  <br>
-  <button type="submit">ADD</button>
-</form>
+<br>
 
+<div class="row">
+  <div class="col-8 offset-2">
+<form method="POST" action="/listings"></form>
+<body>
+  
+  <div class="mb-3">
+  <label for="title" class="form-label">Title</label>
+  <input name="listing[title]" placeholder="Enter title" type="text" class="form-control">
+  </div>
+
+  <div class="mb-3">
+   <label for="description" class="form-label">Description</label>
+   <textarea name="listing[description]" placeholder="Enter description" class="form-control"></textarea>
+  </div>
+
+  
+    <div class="mb-3 ">
+          <label for="image" class="form-label">Image Link</label>
+          <input name="listing[image]" placeholder="Enter Image URL" type="text"  class="form-control">
+  </div>
+  <div class="row">
+      <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+      <input name="listing[price]" placeholder="Enter price" type="number"  class="form-control">
+    </div> 
+      
+      <div class="mb-3 col-md-8">
+      <label for="country" class="form-label">Country</label>
+        <input name="listing[country]" placeholder="Enter country" type="text"  class="form-control">
+    </div>
+ </div>
+
+   <div class="mb-3">
+  <label for="location" class="form-label">Location</label>
+     <input name="listing[location]" placeholder="Enter location" type="text"  class="form-control">
+ </div>
+
+<br>
+
+  <button class="btn btn-dark add-btn" type="submit">ADD</button>
+<br>
+<br>
+<br>
+</form>
+  
+  </div>
+  </div>
 </body>

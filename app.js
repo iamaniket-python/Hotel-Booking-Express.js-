@@ -33,7 +33,7 @@ async function main() {
 }
 // --------------------------------------------------------
 app.get("/",(req, res)=>{
-    res.send("hii sonali");
+    res.send("<h1>Hello</h1>");
 })
 // --------------------------------------------------------
 // New listing form
@@ -58,6 +58,7 @@ app.post("/listings",async(req ,res)=>{
 app.get("/listings/:id", async(req,res)=>{
     let {id} =req.params;
     const lisiting =await Listing.findById(id);
+    
      res.render("listing/show", { lisiting });
 })
 // ---------------------------------------------------------------
@@ -65,24 +66,30 @@ app.get("/listings/:id", async(req,res)=>{
 app.get("/listings/:id/edit",async(req,res)=> {
     let {id} =req.params;
     const listing =await Listing.findById(id);
-    res.render("listings/edit", { listing });
+    res.render("listing/edit", { listing });
 
 })
 // ----------------------------------------------------------------------
 // update route
 app.put("/listings/:id",async(req,res)=> {
    let {id} =req.params;
-   await Listing .findByIdUpdate(id,{...req.body.listing});
+   await Listing .findByIdAndUpdate(id,{...req.body.listing});
    res.redirect(`/listings/${id}`);
 });
 // ------------------------------------------------------------------------
 //  delete
-app.delete("/listing/:id",async(req, res)=>{
-    let {id} =req.params;
-    let deletedListing =await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
+app.delete("/listings/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    let deletedListing = await Listing.findByIdAndDelete(id);
+    console.log("Deleted:", deletedListing);
     res.redirect("/listings");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error deleting listing");
+  }
 });
+
 // ---------------------------------------------------------------------------
 app.listen(8080,()=>{
     console.log("Running succesfully  to port 8080")
