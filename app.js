@@ -79,16 +79,13 @@ app.put("/listings/:id",async(req,res)=> {
 // ------------------------------------------------------------------------
 //  delete
 app.delete("/listings/:id", async (req, res) => {
-  try {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log("Deleted:", deletedListing);
-    res.redirect("/listings");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error deleting listing");
-  }
+    console.log(deletedListing);
+    res.redirect("/listings");  
+  
 });
+
 
 // ---------------------------------------------------------------------------
 app.listen(8080,()=>{

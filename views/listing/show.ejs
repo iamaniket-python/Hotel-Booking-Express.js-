@@ -20,11 +20,13 @@
    
     <br>
     <div class="btns">
-     <a href="/listings/<%= lisiting._id%>/edit"class="btn btn-outline-success col-1 offset-2">Edit </a>
+   <form method="POST" action="/listings/<%= listings_id %>?_method=DELETE">
 
-    <form method="POST" action="/listing/<%= listings._id %>?_method=DELETE">
-    <button class="btn btn-outline-danger offset-4" type="submit">Delete</button>
-    </form>
+
+   <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+  <button class="btn btn-outline-danger offset-4" type="submit">Delete</button>
+</form>
+
    </div>
 </div>
 <br>
