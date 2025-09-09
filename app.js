@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname,'/public')))
 const MONGO_URL= "mongodb://127.0.0.1:27017/Hotelbooking";
 main()
   .then(() => {
-    console.log("connected to DB");
+    console.log("Succesfully Connected");
   })
   .catch((err) => {
     console.log(err);
@@ -35,7 +35,7 @@ async function main() {
 }
 
 app.get("/", (req, res) => {
-  res.send("Hi, I am root");
+  res.send("<h1>Hello I am Aniket Shrivastava</h1>");
 });
 
 //Index Route
@@ -57,11 +57,11 @@ app.get("/listings/:id", async (req, res) => {
 });
 
 //Create Route
-app.post("/listings", async (req, res) => {
+app.post("/listings", wrapAsync(async (req, res) => {
   const newListing = new Listing(req.body.listing);
   await newListing.save();
   res.redirect("/listings");
-});
+}));
 
 //Edit Route
 app.get("/listings/:id/edit", async (req, res) => {
@@ -85,20 +85,18 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
-// app.get("/testListing", async (req, res) => {
-//   let sampleListing = new Listing({
-//     title: "My New Villa",
-//     description: "By the beach",
-//     price: 1200,
-//     location: "Calangute, Goa",
-//     country: "India",
-//   });
+// standard response
+// * -incoming request match
 
-//   await sampleListing.save();
-//   console.log("sample was saved");
-//   res.send("successful testing");
-// });
+// app.all("*",(req,res,next)=>{
+//   next(new ExpressError(404,"Page not found"))
+// })
+
+app.use((err,req,res,next)=>{
+  let {statusCode,message}= err;
+  res.status(statusCode).send(message)
+});
 
 app.listen(8080, () => {
-  console.log("server is listening to port 8080");
+  console.log("server is active on port 8080");
 });
